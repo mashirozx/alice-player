@@ -1,0 +1,42 @@
+{
+  "name": "samoyedplayer",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint \"src/**/*.{ts,js,json,vue}\"",
+    "format": "eslint \"src/**/*.{ts,js,json,vue}\" --fix && prettier \"src/**/*.{ts,js,json,vue}\" --write",
+    "format:lint": "eslint \"src/**/*.{ts,js,json,vue}\" --fix",
+    "format:prettier": "prettier \"src/**/*.{ts,js,json,vue}\" --write",
+    "git:commit": "git add . && git commit",
+    "gen:icon": "node scripts/import-svg-icons.js && eslint \"src/components/Icon.vue\" --fix && prettier \"src/components/Icon.vue\" --write"
+  },
+  "dependencies": {
+    "@yzfe/svgicon": "^1.0.1",
+    "@yzfe/vue3-svgicon": "^1.0.1",
+    "autoprefixer": "^10.2.5",
+    "chroma-js": "^2.1.1",
+    "colorthief": "^2.3.2",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.21",
+    "normalize.css": "^8.0.1",
+    "object-hash": "^2.1.1",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "camelcase": "^6.2.0",
+    "eslint": "^7.25.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "vite": "^2.2.3",
+    "vite-plugin-svgicon": "^1.0.0-alpha.0"
+  }
+}

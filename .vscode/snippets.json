@@ -1,0 +1,8 @@
+{
+  "html": {
+    "snippets": {
+      "divc": "div[class=${1}]",
+      "icon": "icon[name=${1}]"
+    }
+  }
+}

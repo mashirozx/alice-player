@@ -1,0 +1,52 @@
+<!-- Dynamically generated file by scripts/import-svg-icons.js -->
+<template>
+  <svg-icon :data="svg[$props.name]" original></svg-icon>
+</template>
+
+<script>
+  import backward from '@/assets/icons/backward.svg'
+  import bars from '@/assets/icons/bars.svg'
+  import forward from '@/assets/icons/forward.svg'
+  import pause from '@/assets/icons/pause.svg'
+  import play from '@/assets/icons/play.svg'
+  import plus from '@/assets/icons/plus.svg'
+  import random from '@/assets/icons/random.svg'
+  import repeat1 from '@/assets/icons/repeat-1.svg'
+  import repeat from '@/assets/icons/repeat.svg'
+  import scrollOld from '@/assets/icons/scroll-old.svg'
+  import times from '@/assets/icons/times.svg'
+  import volumeDown from '@/assets/icons/volume-down.svg'
+  import volumeMute from '@/assets/icons/volume-mute.svg'
+  import volumeOff from '@/assets/icons/volume-off.svg'
+  import volumeUp from '@/assets/icons/volume-up.svg'
+  import volume from '@/assets/icons/volume.svg'
+
+  export default {
+    name: 'Icon',
+    props: {
+      name: { type: String },
+    },
+    data() {
+      return {
+        svg: {
+          backward: backward,
+          bars: bars,
+          forward: forward,
+          pause: pause,
+          play: play,
+          plus: plus,
+          random: random,
+          'repeat-1': repeat1,
+          repeat: repeat,
+          'scroll-old': scrollOld,
+          times: times,
+          'volume-down': volumeDown,
+          'volume-mute': volumeMute,
+          'volume-off': volumeOff,
+          'volume-up': volumeUp,
+          volume: volume,
+        },
+      }
+    },
+  }
+</script>
