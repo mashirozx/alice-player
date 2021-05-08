@@ -1,5 +1,5 @@
 <template>
-  <div class="lrc__container" :ref="setContainerRef">
+  <div class="lrc__container" :ref="setContainerRef" :data="state.offsetTop">
     <div
       v-for="(line, index) in $props.lrc"
       :key="index"
@@ -30,10 +30,6 @@
       currentTime: { type: Number, default: NaN },
     },
     setup(props) {
-      // const computeOffset=()=>{
-
-      // }
-
       const state = reactive({
         currentIndex: NaN,
         containerRef: null,
