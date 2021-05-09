@@ -20,8 +20,6 @@
     "chroma-js": "^2.1.1",
     "colorthief": "^2.3.2",
     "js-cookie": "^2.2.1",
-    "lodash": "^4.17.21",
-    "normalize.css": "^8.0.1",
     "object-hash": "^2.1.1",
     "vue": "^3.0.5"
   },
