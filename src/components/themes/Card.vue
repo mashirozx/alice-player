@@ -143,7 +143,7 @@
             {
               audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
               thumbnail:
-                'https://s3-hk.2heng.xin/view/2021/05/04/b1153039f621fa2029e0647cd3e188ef.jpg',
+                'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
               title: 'Symphony',
               singer: 'Clean Bandit ft. Zara Larsson',
               lrc: [['00:00', 'Not available']],
@@ -257,7 +257,7 @@
           return {
             audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
             thumbnail:
-              'https://s3-hk.2heng.xin/view/2021/05/04/b1153039f621fa2029e0647cd3e188ef.jpg',
+              'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
             title: 'Symphony',
             singer: 'Clean Bandit ft. Zara Larsson',
             lrc: [['00:00', 'Not available']],
