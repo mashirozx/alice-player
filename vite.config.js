@@ -7,6 +7,9 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: '/src/' }],
   },
+  build: {
+    sourcemap: true,
+  },
   plugins: [
     vue(),
     svgicon({
