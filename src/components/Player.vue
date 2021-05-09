@@ -191,6 +191,7 @@
 
         this.customAddEventListener(this.audio, 'loadstart', this.handleLoadstartEvent)
         this.customAddEventListener(this.audio, 'progress', this.handleProgressEvent)
+        this.customAddEventListener(this.audio, 'durationchange', this.handleDurationchangeEvent)
         this.customAddEventListener(this.audio, 'canplay', this.handleCanplayEvent)
         this.customAddEventListener(this.audio, 'canplaythrough', this.handleCanplaythroughEvent)
         this.customAddEventListener(this.audio, 'timeupdate', this.handleTimeupdateEvent)
@@ -301,11 +302,15 @@
         this.isLoading = false
       },
       handleProgressEvent(event) {
-        this.duration = this.audio.duration
-        this.durationReadable = utils.secondToTime(this.duration)
+        // this.duration = this.audio.duration
+        // this.durationReadable = utils.secondToTime(this.duration)
         this.progress = this.audio.buffered.length
           ? this.audio.buffered.end(this.audio.buffered.length - 1) / this.duration
           : 0
+      },
+      handleDurationchangeEvent(event) {
+        this.duration = this.audio.duration
+        this.durationReadable = utils.secondToTime(this.duration)
       },
       handleTimeupdateEvent(event) {
         this.currentTime = this.audio.currentTime
