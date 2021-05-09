@@ -16,7 +16,6 @@
   "dependencies": {
     "@yzfe/svgicon": "^1.0.1",
     "@yzfe/vue3-svgicon": "^1.0.1",
-    "autoprefixer": "^10.2.5",
     "chroma-js": "^2.1.1",
     "colorthief": "^2.3.2",
     "js-cookie": "^2.2.1",
@@ -27,6 +26,7 @@
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "autoprefixer": "^10.2.5",
     "camelcase": "^6.2.0",
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^3.4.0",
