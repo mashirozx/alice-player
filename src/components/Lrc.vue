@@ -10,8 +10,8 @@
       <span class="content">
         {{ parseLrc(line[1]).content }}
       </span>
-      <em class="transition" v-if="parseLrc(line[1]).transition">
-        {{ parseLrc(line[1]).transition }}
+      <em class="translation" v-if="parseLrc(line[1]).translation">
+        {{ parseLrc(line[1]).translation }}
       </em>
     </div>
   </div>
@@ -104,7 +104,7 @@
         const match = lrcText.match(regex)
         return {
           content: match[1],
-          transition: match[2],
+          translation: match[2],
         }
       },
     },

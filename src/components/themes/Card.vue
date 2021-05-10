@@ -1,7 +1,13 @@
 <template>
   <div :class="['player']" :style="cssVars">
     <div class="cover">
-      <img class="thumbnail" :src="currentTrack.thumbnail" alt="thumbnail" draggable="false" />
+      <img
+        class="thumbnail"
+        :src="currentTrack.thumbnail"
+        alt="thumbnail"
+        draggable="false"
+        loading="lazy"
+      />
     </div>
     <div :class="['info', display === 'thumb' ? 'thumb' : 'popup']">
       <div class="progress">
@@ -56,7 +62,7 @@
         <div class="wrapper">
           <div class="track-item float">
             <div class="thumb">
-              <img class="image" :src="currentTrack.thumbnail" alt="thumb" />
+              <img class="image" :src="currentTrack.thumbnail" alt="thumb" loading="lazy" />
             </div>
             <div class="info">
               <div class="title">{{ currentTrack.title }}</div>
@@ -97,7 +103,7 @@
               @click="handlePlaySpecifiedTrackEvent(index)"
             >
               <div class="thumb">
-                <img class="image" :src="track.thumbnail" alt="thumb" />
+                <img class="image" :src="track.thumbnail" alt="thumb" loading="lazy" />
               </div>
               <div class="info">
                 <div class="title">{{ track.title }}</div>

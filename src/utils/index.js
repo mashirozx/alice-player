@@ -1,14 +1,4 @@
-const isMobile = /mobile/i.test(window.navigator.userAgent)
-
-const utils = {
-  /**
-   * @param {string} path
-   * @returns {Boolean}
-   */
-  isExternal(path) {
-    return /^(https?:|mailto:|tel:)/.test(path)
-  },
-
+export default {
   /**
    * Parse second to time string
    *
@@ -23,40 +13,20 @@ const utils = {
     return (hour > 0 ? [hour, min, sec] : [min, sec]).map(add0).join(':')
   },
 
-  isMobile,
-
-  storage: {
-    set: (key, value) => {
-      localStorage.setItem(key, value)
-    },
-
-    get: (key) => localStorage.getItem(key),
-  },
-
-  nameMap: {
-    dragStart: isMobile ? 'touchstart' : 'mousedown',
-    dragMove: isMobile ? 'touchmove' : 'mousemove',
-    dragEnd: isMobile ? 'touchend' : 'mouseup',
-  },
+  isMobile: /mobile/i.test(window.navigator.userAgent),
 
   /**
-   * get random order, using Fisher–Yates shuffle
+   * Fisher–Yates shuffle
    */
-  randomOrder: (length) => {
-    function shuffle(arr) {
-      for (let i = arr.length - 1; i >= 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1))
-        const itemAtIndex = arr[randomIndex]
-        arr[randomIndex] = arr[i]
-        arr[i] = itemAtIndex
-      }
-      return arr
+  shuffleArray(array) {
+    const arr = JSON.parse(JSON.stringify(array))
+    for (let i = arr.length - 1; i >= 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1))
+      const itemAtIndex = arr[randomIndex]
+      arr[randomIndex] = arr[i]
+      arr[i] = itemAtIndex
     }
-    return shuffle(
-      [...Array(length)].map(function (item, i) {
-        return i
-      })
-    )
+    return arr
   },
 
   /**
@@ -110,5 +80,3 @@ const utils = {
     }
   },
 }
-
-export default utils

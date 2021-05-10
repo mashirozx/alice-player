@@ -106,7 +106,7 @@
         type: Object,
         default() {
           return {
-            preload: true,
+            preload: 'metadata', // 'none', 'auto'
             autoplay: true,
             imageProxy: '', // https://ip.webmasterapi.com/api/imageproxy/
           }
@@ -176,7 +176,7 @@
           list.forEach((item) => {
             const hash = Hash(item)
             this.state.trackData[hash] = {
-              audio: new Audio(item.audio),
+              audio: item.audio,
               info: {
                 audio: item.audio,
                 thumbnail: this.$props.options.imageProxy + item.thumbnail,
@@ -218,9 +218,6 @@
       },
       async load(hash) {
         this.resetPlayerState()
-        // this.state.trackData[hash].audio.preload = true
-        // this.state.trackData[hash].audio.volume = this.volume
-        // this.audio = this.state.trackData[hash].audio
         this.audio = new Audio(this.state.trackData[hash].info.audio)
         this.audio.preload = this.$props.options.preload
         this.audio.volume = this.volume
@@ -401,15 +398,7 @@
         if (this.playMode === 0) {
           this.state.order = this.state.playListHash
         } else if (this.playMode === 1) {
-          const shuffleArray = (array) => {
-            const _array = JSON.parse(JSON.stringify(array))
-            for (let i = _array.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1))
-              ;[_array[i], _array[j]] = [_array[j], _array[i]]
-            }
-            return _array
-          }
-          this.state.order = shuffleArray(this.state.playListHash)
+          this.state.order = utils.shuffleArray(this.state.playListHash)
         } else if (this.playMode === 2) {
           this.state.order = [this.state.playListHash[this.state.currentPlayListIndex]]
         }
@@ -429,6 +418,9 @@
         this.audio.volume = this.volume
       },
       async play() {
+        if (!this.audio) {
+          this.init()
+        }
         if (!this.canPlay) {
           this.pendingPlay = true
         } else {
