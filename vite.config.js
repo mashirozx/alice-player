@@ -4,6 +4,7 @@ import svgicon from 'vite-plugin-svgicon'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   resolve: {
     alias: [{ find: '@', replacement: '/src/' }],
   },
