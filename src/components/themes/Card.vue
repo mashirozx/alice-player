@@ -125,7 +125,7 @@
 </template>
 
 <script>
-  import ColorThief from 'colorthief'
+  import ColorThief from '@moezx/colorthief'
   import chroma from 'chroma-js'
   import utils from '@/utils'
   import Lrc from '../Lrc.vue'

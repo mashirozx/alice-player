@@ -51,6 +51,36 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@moezx/colorthief@^2.3.2-1":
+  version "2.3.2-1"
+  resolved "https://registry.nlark.com/@moezx/colorthief/download/@moezx/colorthief-2.3.2-1.tgz#ae5cee134cbf3572497fe17c94484d3d1e45d959"
+  integrity sha1-rlzuE0y/NXJJf+F8lEhNPR5F2Vk=
+  dependencies:
+    "@moezx/get-pixels" "^4.0.0"
+    "@moezx/quantize" "^1.2.0"
+
+"@moezx/get-pixels@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.nlark.com/@moezx/get-pixels/download/@moezx/get-pixels-4.0.0.tgz#0e9eef82ff6f8a43dc92fa363d31b72d7443347a"
+  integrity sha1-Dp7vgv9vikPckvo2PTG3LXRDNHo=
+  dependencies:
+    data-uri-to-buffer "0.0.3"
+    jpeg-js "^0.4.3"
+    mime-types "^2.0.1"
+    ndarray "^1.0.13"
+    ndarray-pack "^1.1.1"
+    node-bitmap "0.0.1"
+    omggif "^1.0.5"
+    parse-data-uri "^0.2.0"
+    pngjs "^3.3.3"
+    request "^2.44.0"
+    through "^2.3.4"
+
+"@moezx/quantize@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.nlark.com/@moezx/quantize/download/@moezx/quantize-1.2.0.tgz#5b365ae1977a27e9e8b39946982154625e24291c"
+  integrity sha1-WzZa4Zd6J+nos5lGmCFUYl4kKRw=
+
 "@types/q@^1.5.1":
   version "1.5.4"
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
@@ -444,14 +474,6 @@ colorette@^1.2.2:
   version "1.2.2"
   resolved "https://registry.nlark.com/colorette/download/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha1-y8x51emcrqLb8Q6zom/Ys+as+pQ=
-
-colorthief@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.nlark.com/colorthief/download/colorthief-2.3.2.tgz#00b984f421abe5a2af71c4d464c9d80d407fd53d"
-  integrity sha1-ALmE9CGr5aKvccTUZMnYDUB/1T0=
-  dependencies:
-    get-pixels "^3.3.2"
-    quantize "github:lokesh/quantize"
 
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
@@ -969,23 +991,6 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.1:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
-get-pixels@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.npm.taobao.org/get-pixels/download/get-pixels-3.3.2.tgz#3f62fb8811932c69f262bba07cba72b692b4ff03"
-  integrity sha1-P2L7iBGTLGnyYrugfLpytpK0/wM=
-  dependencies:
-    data-uri-to-buffer "0.0.3"
-    jpeg-js "^0.3.2"
-    mime-types "^2.0.1"
-    ndarray "^1.0.13"
-    ndarray-pack "^1.1.1"
-    node-bitmap "0.0.1"
-    omggif "^1.0.5"
-    parse-data-uri "^0.2.0"
-    pngjs "^3.3.3"
-    request "^2.44.0"
-    through "^2.3.4"
-
 get-stdin@^6.0.0:
   version "6.0.0"
   resolved "https://registry.nlark.com/get-stdin/download/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
@@ -1239,10 +1244,10 @@ isstream@~0.1.2:
   resolved "https://registry.npm.taobao.org/isstream/download/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jpeg-js@^0.3.2:
-  version "0.3.7"
-  resolved "https://registry.nlark.com/jpeg-js/download/jpeg-js-0.3.7.tgz#471a89d06011640592d314158608690172b1028d"
-  integrity sha1-RxqJ0GARZAWS0xQVhghpAXKxAo0=
+jpeg-js@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.npm.taobao.org/jpeg-js/download/jpeg-js-0.4.3.tgz#6158e09f1983ad773813704be80680550eff977b"
+  integrity sha1-YVjgnxmDrXc4E3BL6AaAVQ7/l3s=
 
 js-cookie@^2.2.1:
   version "2.2.1"
@@ -1710,10 +1715,6 @@ qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.nlark.com/qs/download/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha1-yzroBuh0BERYTvFUzo7pjUA/PjY=
-
-"quantize@github:lokesh/quantize":
-  version "1.2.0"
-  resolved "https://codeload.github.com/lokesh/quantize/tar.gz/f572abd2646b5944852535c8a26fdb958a5d7c4b"
 
 readdirp@~3.5.0:
   version "3.5.0"
