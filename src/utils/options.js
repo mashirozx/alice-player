@@ -21,8 +21,8 @@ export default (playList, options) => {
 
   playList = playList.map((item) => {
     const res = {
-      title: item.name || item.title || item.song || 'Audio name',
-      singer: item.artist || item.author || item.singer || 'Audio artist',
+      name: item.name || item.title || item.song || 'Audio name',
+      artist: item.artist || item.author || item.singer || 'Audio artist',
       cover: item.cover || item.pic || item.thumb || item.thumbnail,
       thumbnail: item.thumb || item.thumbnail || item.cover || item.pic,
       audio: item.audio || item.src,

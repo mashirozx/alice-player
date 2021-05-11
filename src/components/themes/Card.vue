@@ -1,13 +1,7 @@
 <template>
   <div :class="['player']" :style="cssVars">
     <div class="cover">
-      <img
-        class="thumbnail"
-        :src="currentTrack.thumbnail"
-        alt="thumbnail"
-        draggable="false"
-        loading="lazy"
-      />
+      <img class="image" :src="currentTrack.cover" alt="cover" draggable="false" loading="lazy" />
     </div>
     <div :class="['info', display === 'thumb' ? 'thumb' : 'popup']">
       <div class="progress">
@@ -33,8 +27,8 @@
         <div class="time total">{{ $props.durationReadable }}</div>
       </div>
       <div class="meta">
-        <div class="name song">{{ currentTrack.title }}</div>
-        <div class="name artist">{{ currentTrack.singer }}</div>
+        <div class="name song">{{ currentTrack.name }}</div>
+        <div class="name artist">{{ currentTrack.artist }}</div>
       </div>
       <div class="controls">
         <div v-for="(button, index) in buttons" :key="index" :class="['button', ...button.classes]">
@@ -62,11 +56,11 @@
         <div class="wrapper">
           <div class="track-item float">
             <div class="thumb">
-              <img class="image" :src="currentTrack.thumbnail" alt="thumb" loading="lazy" />
+              <img class="image" :src="currentTrack.cover" alt="thumb" loading="lazy" />
             </div>
             <div class="info">
-              <div class="title">{{ currentTrack.title }}</div>
-              <div class="artist">{{ currentTrack.singer }}</div>
+              <div class="name">{{ currentTrack.name }}</div>
+              <div class="artist">{{ currentTrack.artist }}</div>
               <div class="progress">
                 <div class="time">
                   <div class="text">{{ $props.currentTimeReadable }}</div>
@@ -103,11 +97,11 @@
               @click="handlePlaySpecifiedTrackEvent(index)"
             >
               <div class="thumb">
-                <img class="image" :src="track.thumbnail" alt="thumb" loading="lazy" />
+                <img class="image" :src="track.cover" alt="thumb" loading="lazy" />
               </div>
               <div class="info">
-                <div class="title">{{ track.title }}</div>
-                <div class="artist">{{ track.singer }}</div>
+                <div class="name">{{ track.name }}</div>
+                <div class="artist">{{ track.artist }}</div>
               </div>
             </div>
           </div>
@@ -148,10 +142,10 @@
           return [
             {
               audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
-              thumbnail:
+              cover:
                 'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-              title: 'Symphony',
-              singer: 'Clean Bandit ft. Zara Larsson',
+              name: 'Symphony',
+              artist: 'Clean Bandit ft. Zara Larsson',
               lrc: [['00:00', 'Not available']],
             },
           ]
@@ -262,10 +256,10 @@
           // TODO: defalut image
           return {
             audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
-            thumbnail:
+            cover:
               'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-            title: 'Symphony',
-            singer: 'Clean Bandit ft. Zara Larsson',
+            name: 'Symphony',
+            artist: 'Clean Bandit ft. Zara Larsson',
             lrc: [['00:00', 'Not available']],
           }
         }
@@ -322,7 +316,7 @@
       colorThief() {
         const image = new Image()
         image.crossOrigin = 'anonymous'
-        image.src = this.currentTrack.thumbnail
+        image.src = this.currentTrack.cover
         image.addEventListener('load', async (event) => {
           const colorThief = new ColorThief()
           let color
@@ -370,7 +364,7 @@
     > .cover {
       width: 100%;
       height: 100%;
-      .thumbnail {
+      .image {
         width: 100%;
         height: 100%;
       }
@@ -600,7 +594,7 @@
               box-sizing: border-box;
               border-bottom: 2px $shadow-gray solid;
               // padding-bottom: 1px;
-              .title {
+              .name {
                 font-size: 0.8em;
                 font-weight: 500;
                 letter-spacing: 3px;
@@ -631,7 +625,7 @@
                 height: 100%;
                 justify-content: flex-end;
                 border-bottom: none;
-                // .title {
+                // .name {
                 // }
                 .artist {
                   margin-top: 4px;

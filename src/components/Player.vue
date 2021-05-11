@@ -73,9 +73,9 @@
             return {
               hash,
               audio: item.audio,
-              thumbnail: item.thumbnail,
-              title: item.title,
-              singer: item.singer,
+              cover: item.cover,
+              name: item.name,
+              artist: item.artist,
               lrc,
             }
           })
@@ -116,10 +116,11 @@
               audio: item.audio,
               info: {
                 audio: item.audio,
-                thumbnail: item.thumbnail,
-                title: item.title,
-                singer: item.singer,
+                cover: item.cover,
+                name: item.name,
+                artist: item.artist,
                 lrc: item.lrc,
+                // color: item.color || this.$props.options.color,
               },
               lrc: LRC_PENDING,
             }
