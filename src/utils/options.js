@@ -4,7 +4,7 @@ export default (playList, options) => {
     container: options.container || '#app',
     autoplay: false,
     preload: 'metadata',
-    theme: '#333333',
+    color: '#333333',
     playMode: 'order',
     volume: 0.7,
     storageName: 'player-setting',
@@ -27,7 +27,7 @@ export default (playList, options) => {
       thumbnail: item.thumb || item.thumbnail || item.cover || item.pic,
       audio: item.audio || item.src,
       lrc: item.lrc,
-      theme: item.theme,
+      color: item.color,
     }
     return res
   })

@@ -5,12 +5,14 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
   resolve: {
     alias: [
       { find: '@', replacement: '/src/' },
       { find: 'vue', replacement: 'vue/dist/vue.esm-bundler.js' },
     ],
+  },
+  server: {
+    open: '/index.html',
   },
   build: {
     sourcemap: true,
@@ -19,15 +21,23 @@ export default defineConfig({
       name: 'DvaPlayer',
     },
     rollupOptions: {
+      // https://rollupjs.org/guide/en/#big-list-of-options
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue'],
+      manifest: true,
       output: {
+        // dir: 'build',
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: 'Vue',
         },
+        // manualChunks(id) {
+        //   if (id.includes('node_modules')) {
+        //     return 'vendor'
+        //   }
+        // },
       },
     },
   },

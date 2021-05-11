@@ -1,4 +1,4 @@
-import { createApp, reactive, h, ref, onMounted } from 'vue'
+import { createApp, h } from 'vue'
 import Player from './components/Player.vue'
 import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
 import '@yzfe/svgicon/lib/svgicon.css'
@@ -14,10 +14,10 @@ class DvaPlayer {
   }
 
   createPlayer() {
-    const playList = this.playList
+    const { playList, options } = this
     const App = {
       render() {
-        return h(Player, { playList })
+        return h(Player, { playList, options })
       },
     }
     const app = createApp(App)

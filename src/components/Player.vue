@@ -46,7 +46,6 @@
           return {
             preload: 'metadata', // 'none', 'auto'
             autoplay: true,
-            imageProxy: '', // https://ip.webmasterapi.com/api/imageproxy/
           }
         },
       },
@@ -74,7 +73,7 @@
             return {
               hash,
               audio: item.audio,
-              thumbnail: props.options.imageProxy + item.thumbnail,
+              thumbnail: item.thumbnail,
               title: item.title,
               singer: item.singer,
               lrc,
@@ -117,7 +116,7 @@
               audio: item.audio,
               info: {
                 audio: item.audio,
-                thumbnail: this.$props.options.imageProxy + item.thumbnail,
+                thumbnail: item.thumbnail,
                 title: item.title,
                 singer: item.singer,
                 lrc: item.lrc,
@@ -383,6 +382,7 @@
     },
     mounted() {
       this.init()
+      if (this.$props.options.autoplay) this.play()
     },
   }
 </script>
