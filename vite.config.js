@@ -7,7 +7,10 @@ import path from 'path'
 export default defineConfig({
   base: './',
   resolve: {
-    alias: [{ find: '@', replacement: '/src/' }],
+    alias: [
+      { find: '@', replacement: '/src/' },
+      { find: 'vue', replacement: 'vue/dist/vue.esm-bundler.js' },
+    ],
   },
   build: {
     sourcemap: true,
