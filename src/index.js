@@ -5,7 +5,7 @@ import '@yzfe/svgicon/lib/svgicon.css'
 import Icon from './components/Icon.vue'
 import parseOptions from './utils/options'
 
-export default class Player {
+export default class DvaPlayer {
   constructor(playList, options) {
     const config = parseOptions(playList, options)
     this.playList = config.playList
