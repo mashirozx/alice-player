@@ -36,6 +36,7 @@
     name: 'Player',
     components: { Track },
     props: {
+      test: Array,
       playList: {
         type: Array,
         default() {

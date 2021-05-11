@@ -1,4 +1,4 @@
-export default (options) => {
+export default (playList, options) => {
   const finalOptions = {
     container: null,
     autoplay: null,
@@ -28,7 +28,9 @@ export default (options) => {
     }
   }
 
-  finalOptions['playList'] = options.playList.map((item) => {
+  playList = playList || options.playList
+
+  playList = playList.map((item) => {
     const res = {
       name: item.name || item.title || item.song || 'Audio name',
       artist: item.artist || item.author || item.singer || 'Audio artist',
@@ -41,5 +43,5 @@ export default (options) => {
     return res
   })
 
-  return finalOptions
+  return { playList, options: finalOptions }
 }
