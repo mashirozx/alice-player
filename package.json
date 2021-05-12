@@ -34,7 +34,7 @@
     "prettier": "^2.2.1",
     "sass": "^1.32.12",
     "sass-loader": "^11.0.1",
-    "vite": "^2.2.4",
+    "vite": "^2.3.0",
     "vite-plugin-svgicon": "^1.0.0-alpha.0"
   }
 }
