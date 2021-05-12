@@ -16,6 +16,7 @@ export default defineConfig({
   },
   build: {
     sourcemap: true,
+    manifest: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'DvaPlayer',
@@ -25,7 +26,6 @@ export default defineConfig({
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: ['vue'],
-      manifest: true,
       output: {
         // dir: 'build',
         // Provide global variables to use in the UMD build

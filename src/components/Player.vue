@@ -28,9 +28,9 @@
   import store from '@/utils/store'
   import Track from './themes/Card.vue'
 
-  const LRC_PENDING = [['00:00', 'Pending']]
-  const LRC_LOADING = [['00:00', 'Loading']]
-  const LRC_NONE = [['00:00', 'Not available']]
+  const LRC_PENDING = [['0', 'Pending']]
+  const LRC_LOADING = [['0', 'Loading']]
+  const LRC_NONE = [['0', 'Not available']]
 
   export default {
     name: 'Player',
@@ -77,6 +77,7 @@
               name: item.name,
               artist: item.artist,
               lrc,
+              color: item.color,
             }
           })
         }),
@@ -120,7 +121,7 @@
                 name: item.name,
                 artist: item.artist,
                 lrc: item.lrc,
-                // color: item.color || this.$props.options.color,
+                color: item.color,
               },
               lrc: LRC_PENDING,
             }
@@ -171,6 +172,10 @@
         this.customAddEventListener(this.audio, 'ended', this.handleEndedEvent)
       },
       async loadLrc(hash, context) {
+        if (!context) {
+          this.state.trackData[hash]['lrc'] = LRC_NONE
+          return
+        }
         this.state.trackData[hash]['lrc'] = LRC_LOADING
         let lrcRaw
         if (/^(http|https):\/\//.test(context)) {
@@ -275,8 +280,6 @@
         this.isLoading = false
       },
       handleProgressEvent(event) {
-        // this.duration = this.audio.duration
-        // this.durationReadable = utils.secondToTime(this.duration)
         this.progress = this.audio.buffered.length
           ? this.audio.buffered.end(this.audio.buffered.length - 1) / this.duration
           : 0
@@ -342,6 +345,9 @@
         }
       },
       seek(time) {
+        if (!this.canPlay) {
+          return
+        }
         let _time = time
         _time = Math.max(time, 0)
         _time = Math.min(time, this.duration)

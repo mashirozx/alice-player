@@ -1,10 +1,11 @@
+import { DEFAULT_COVER } from '@/utils/constants'
 export default (playList, options) => {
   // default options
   const defaultOption = {
     container: options.container || '#app',
     autoplay: false,
     preload: 'metadata',
-    color: '#333333',
+    color: null,
     playMode: 'order',
     volume: 0.7,
     storageName: 'player-setting',
@@ -23,11 +24,11 @@ export default (playList, options) => {
     const res = {
       name: item.name || item.title || item.song || 'Audio name',
       artist: item.artist || item.author || item.singer || 'Audio artist',
-      cover: item.cover || item.pic || item.thumb || item.thumbnail,
-      thumbnail: item.thumb || item.thumbnail || item.cover || item.pic,
+      cover: item.cover || item.pic || item.thumb || item.thumbnail || DEFAULT_COVER,
+      thumbnail: item.thumb || item.thumbnail || item.cover || item.pic || DEFAULT_COVER,
       audio: item.audio || item.src,
       lrc: item.lrc,
-      color: item.color,
+      color: item.color || options.color || null,
     }
     return res
   })
