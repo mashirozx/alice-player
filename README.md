@@ -27,10 +27,10 @@ yarn add alice-player
 ## Quick Start
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/browse/alice-player@latest/style.css" />
+<link rel="stylesheet" href="https://unpkg.com/alice-player@latest/dist/style.css" />
 <div id="app"></div>
 <script src="https://unpkg.com/vue@next"></script>
-<script src="https://unpkg.com/browse/alice-player@latest/dist/alice-player.umd.js"></script>
+<script src="https://unpkg.com/alice-player@latest/dist/alice-player.umd.js"></script>
 ```
 
 ```js
