@@ -1797,9 +1797,9 @@ safer-buffer@^2.0.2, safer-buffer@^2.1.0, safer-buffer@~2.1.0:
   integrity sha1-RPoWGwGHuVSd2Eu5GAL5vYOFzWo=
 
 sass-loader@^11.0.1:
-  version "11.0.1"
-  resolved "https://registry.npm.taobao.org/sass-loader/download/sass-loader-11.0.1.tgz#8672f896593466573b904f47693e0695368e38c9"
-  integrity sha1-hnL4llk0Zlc7kE9HaT4GlTaOOMk=
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-11.1.0.tgz#302a83e41834a7ac0cc9d7591e52688ef4ed92af"
+  integrity sha512-TS8KtLtMAqK68lBs0PRzoGf7ndz9m7pKo4BXvUzjGDDgWEY0qcoMMRVpaHfYM0i3/E6UsererqIpjs7dVA/p7A==
   dependencies:
     klona "^2.0.4"
     neo-async "^2.6.2"
