@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const keyGen = (key) => `SamoyedPlayer__${key}`
+const keyGen = (key) => `AlicePlayer__${key}`
 
 export default {
   set: (key, value) => {

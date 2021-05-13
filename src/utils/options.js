@@ -8,7 +8,7 @@ export default (playList, options) => {
     color: null,
     playMode: 'order',
     volume: 0.7,
-    storageName: 'player-setting',
+    storageName: 'alice-player-setting',
   }
   for (const defaultKey in defaultOption) {
     if (defaultOption.hasOwnProperty(defaultKey) && !options.hasOwnProperty(defaultKey)) {

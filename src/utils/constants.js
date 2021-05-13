@@ -1,2 +1,2 @@
 export const DEFAULT_COVER =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+  'https://ngx.moezx.cc/share/SamoyedPlayer/hand-drawn-vinyl-disc-logo-concept-vector.jpg'

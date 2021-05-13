@@ -8,7 +8,6 @@
   import backward from '@/assets/icons/backward.svg'
   import bars from '@/assets/icons/bars.svg'
   import forward from '@/assets/icons/forward.svg'
-  import illusCd from '@/assets/icons/illus-cd.svg'
   import pause from '@/assets/icons/pause.svg'
   import play from '@/assets/icons/play.svg'
   import plus from '@/assets/icons/plus.svg'
@@ -34,7 +33,6 @@
           backward: backward,
           bars: bars,
           forward: forward,
-          'illus-cd': illusCd,
           pause: pause,
           play: play,
           plus: plus,

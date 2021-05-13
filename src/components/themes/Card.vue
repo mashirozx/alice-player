@@ -276,6 +276,7 @@
         } else {
           // defalut image
           return {
+            cover: DEFAULT_COVER,
             name: 'Track Loading',
             artist: '',
             lrc: [['00:00', 'Loading']],
@@ -287,7 +288,7 @@
     watch: {
       currentTrack: {
         handler() {
-          this.colorThief()
+          this.colorThief(this.currentTrack.cover, this.currentTrack.color)
         },
         deep: true,
         immediate: true,
@@ -296,7 +297,8 @@
     methods: {
       setAltImg(event) {
         event.target.src = DEFAULT_COVER
-        event.target.style.background = this.currentTrack.color || '#999999'
+        this.colorThief(DEFAULT_COVER, null)
+        // event.target.style.background = this.currentTrack.color || '#999999'
       },
       handleSeekEvent(time) {
         this.$emit('seek', time)
@@ -336,14 +338,15 @@
           button.event()
         }
       },
-      async colorThief() {
+      async colorThief(_cover, _color) {
+        const cover = _cover
         let color
-        if (this.currentTrack.color) {
-          color = this.currentTrack.color
+        if (_color) {
+          color = _color
         } else {
           const image = new Image()
           image.crossOrigin = 'anonymous'
-          image.src = this.currentTrack.cover
+          image.src = cover
           await new Promise((resolve) => {
             image.addEventListener('load', async (event) => {
               const colorThief = new ColorThief()
@@ -741,5 +744,10 @@
         }
       }
     }
+  }
+  .image {
+    position: relative;
+    object-fit: cover;
+    object-position: center center;
   }
 </style>

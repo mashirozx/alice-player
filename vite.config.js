@@ -12,14 +12,14 @@ export default defineConfig({
     ],
   },
   server: {
-    open: '/index.html',
+    open: '/src/index.html',
   },
   build: {
     sourcemap: true,
     manifest: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
-      name: 'DvaPlayer',
+      name: 'AlicePlayer',
     },
     rollupOptions: {
       // https://rollupjs.org/guide/en/#big-list-of-options

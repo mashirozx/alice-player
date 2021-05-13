@@ -24,9 +24,8 @@ jobs:
       - name: 🏗️ Build assets
         run: yarn build
 
-      - name: 🚀 Deploy on gh-pages branch
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          #  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
+      #- name: 🚀 Deploy on gh-pages branch
+      #  uses: JamesIves/github-pages-deploy-action@4.1.1
+      #  with:
+      #    BRANCH: gh-pages
+      #    FOLDER: dist

@@ -1,4 +1,4 @@
-import DvaPlayer from './index'
+import AlicePlayer from './index'
 
 var options = {
   preload: 'metadata',
@@ -64,4 +64,4 @@ var playList = [
   },
 ]
 
-var dv = new DvaPlayer(playList, options)
+var ap = new AlicePlayer(playList, options)

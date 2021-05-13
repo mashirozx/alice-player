@@ -5,7 +5,7 @@ import '@yzfe/svgicon/lib/svgicon.css'
 import Icon from './components/Icon.vue'
 import parseOptions from './utils/options'
 
-class DvaPlayer {
+class AlicePlayer {
   constructor(playList, options) {
     const config = parseOptions(playList, options)
     this.playList = config.playList
@@ -29,4 +29,4 @@ class DvaPlayer {
   }
 }
 
-export default DvaPlayer
+export default AlicePlayer
