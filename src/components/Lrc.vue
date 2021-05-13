@@ -8,10 +8,10 @@
       @click="handleSeekClick(line[0])"
     >
       <span class="content">
-        {{ parseLrc(line[1]).content }}
+        {{ state.parsedLrc[index].content }}
       </span>
-      <em class="translation" v-if="parseLrc(line[1]).translation">
-        {{ parseLrc(line[1]).translation }}
+      <em class="translation" v-if="state.parsedLrc[index].translation">
+        {{ state.parsedLrc[index].translation }}
       </em>
     </div>
   </div>
@@ -79,6 +79,19 @@
           if (container) container.scrollTop = offset
           return offset
         }),
+        parsedLrc: computed(() => {
+          let lrc = []
+          lrc = props.lrc.map((item, index) => {
+            const lrcText = item[1]
+            const regex = /^(.*?)(?:\s\((.*)\))?$/
+            const match = lrcText.match(regex)
+            return {
+              content: match[1],
+              translation: match[2],
+            }
+          })
+          return lrc
+        }),
       })
 
       return {
@@ -98,14 +111,6 @@
       },
       handleSeekClick(time) {
         this.$emit('seek', time)
-      },
-      parseLrc(lrcText) {
-        const regex = /^(.*?)(?:\s\((.*)\))?$/
-        const match = lrcText.match(regex)
-        return {
-          content: match[1],
-          translation: match[2],
-        }
       },
     },
   }

@@ -28,9 +28,9 @@
   import store from '@/utils/store'
   import Track from './themes/Card.vue'
 
-  const LRC_PENDING = [['00:00', 'Pending']]
-  const LRC_LOADING = [['00:00', 'Loading']]
-  const LRC_NONE = [['00:00', 'Not available']]
+  const LRC_PENDING = [['0', 'Pending']]
+  const LRC_LOADING = [['0', 'Loading']]
+  const LRC_NONE = [['0', 'Not available']]
 
   export default {
     name: 'Player',
@@ -38,69 +38,7 @@
     props: {
       playList: {
         type: Array,
-        default() {
-          return [
-            {
-              audio:
-                'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.mp3',
-              thumbnail:
-                'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-              lrc:
-                'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.lrc',
-              title: '僕らの手には何もないけど、',
-              singer: 'RAM WIRE',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/hikarunara.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/hikarunara.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/hikarunara.lrc',
-              title: '光るなら',
-              singer: 'Goose house',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.lrc',
-              title: '前前前世',
-              singer: 'RADWIMPS',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/Brave Song - 多田葵.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/Brave Song - 多田葵.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/Brave Song - 多田葵.lrc',
-              title: 'Brave Song',
-              singer: '多田葵',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/darling.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/darling.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/darling.lrc',
-              title: 'トリカゴ',
-              singer: 'XX:me',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/A Tender Feeling - 梶浦由記.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/A Tender Feeling - 梶浦由記.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/A Tender Feeling - 梶浦由記.lrc',
-              title: 'A Tender Feeling',
-              singer: '梶浦由記',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/Heartbeats - Amy Deasismont.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/Heartbeats - Amy Deasismont.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/Heartbeats - Amy Deasismont.lrc',
-              title: 'Heartbeats',
-              singer: 'Amy Deasismont',
-            },
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/春夏秋冬 - 张国荣.mp3',
-              thumbnail: 'https://ngx.moezx.cc/share/SamoyedPlayer/春夏秋冬 - 张国荣.jpg',
-              lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/春夏秋冬 - 张国荣.lrc',
-              title: '春夏秋冬',
-              singer: '张国荣',
-            },
-          ]
-        },
+        required: true,
       },
       options: {
         type: Object,
@@ -108,7 +46,6 @@
           return {
             preload: 'metadata', // 'none', 'auto'
             autoplay: true,
-            imageProxy: '', // https://ip.webmasterapi.com/api/imageproxy/
           }
         },
       },
@@ -136,10 +73,11 @@
             return {
               hash,
               audio: item.audio,
-              thumbnail: props.options.imageProxy + item.thumbnail,
-              title: item.title,
-              singer: item.singer,
+              cover: item.cover,
+              name: item.name,
+              artist: item.artist,
               lrc,
+              color: item.color,
             }
           })
         }),
@@ -179,10 +117,11 @@
               audio: item.audio,
               info: {
                 audio: item.audio,
-                thumbnail: this.$props.options.imageProxy + item.thumbnail,
-                title: item.title,
-                singer: item.singer,
+                cover: item.cover,
+                name: item.name,
+                artist: item.artist,
                 lrc: item.lrc,
+                color: item.color,
               },
               lrc: LRC_PENDING,
             }
@@ -233,6 +172,10 @@
         this.customAddEventListener(this.audio, 'ended', this.handleEndedEvent)
       },
       async loadLrc(hash, context) {
+        if (!context) {
+          this.state.trackData[hash]['lrc'] = LRC_NONE
+          return
+        }
         this.state.trackData[hash]['lrc'] = LRC_LOADING
         let lrcRaw
         if (/^(http|https):\/\//.test(context)) {
@@ -337,8 +280,6 @@
         this.isLoading = false
       },
       handleProgressEvent(event) {
-        // this.duration = this.audio.duration
-        // this.durationReadable = utils.secondToTime(this.duration)
         this.progress = this.audio.buffered.length
           ? this.audio.buffered.end(this.audio.buffered.length - 1) / this.duration
           : 0
@@ -404,6 +345,9 @@
         }
       },
       seek(time) {
+        if (!this.canPlay) {
+          return
+        }
         let _time = time
         _time = Math.max(time, 0)
         _time = Math.min(time, this.duration)
@@ -445,6 +389,7 @@
     },
     mounted() {
       this.init()
+      if (this.$props.options.autoplay) this.play()
     },
   }
 </script>

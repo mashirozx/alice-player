@@ -1,6 +1,6 @@
 {
-  "name": "samoyedplayer",
-  "version": "0.0.0",
+  "name": "alice-player",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -36,5 +36,30 @@
     "sass-loader": "^11.0.1",
     "vite": "^2.2.4",
     "vite-plugin-svgicon": "^1.0.0-alpha.0"
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/samoyedplayer.umd.js",
+  "module": "./dist/samoyedplayer.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/samoyedplayer.es.js",
+      "require": "./dist/samoyedplayer.umd.js"
+    }
+  },
+  "description": "> A beautiful H5 music player built with Vue3. 🍉",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mashirozx/alice-player.git"
+  },
+  "keywords": [
+    "Vue3",
+    "player"
+  ],
+  "author": "Mashiro",
+  "bugs": {
+    "url": "https://github.com/mashirozx/alice-player/issues"
+  },
+  "homepage": "https://github.com/mashirozx/alice-player#readme"
 }

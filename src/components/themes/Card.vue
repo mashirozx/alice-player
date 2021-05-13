@@ -2,11 +2,12 @@
   <div :class="['player']" :style="cssVars">
     <div class="cover">
       <img
-        class="thumbnail"
-        :src="currentTrack.thumbnail"
-        alt="thumbnail"
+        class="image"
+        :src="currentTrack.cover"
+        alt="cover"
         draggable="false"
         loading="lazy"
+        @error="setAltImg"
       />
     </div>
     <div :class="['info', display === 'thumb' ? 'thumb' : 'popup']">
@@ -33,8 +34,8 @@
         <div class="time total">{{ $props.durationReadable }}</div>
       </div>
       <div class="meta">
-        <div class="name song">{{ currentTrack.title }}</div>
-        <div class="name artist">{{ currentTrack.singer }}</div>
+        <div class="name song">{{ currentTrack.name }}</div>
+        <div class="name artist">{{ currentTrack.artist }}</div>
       </div>
       <div class="controls">
         <div v-for="(button, index) in buttons" :key="index" :class="['button', ...button.classes]">
@@ -62,11 +63,17 @@
         <div class="wrapper">
           <div class="track-item float">
             <div class="thumb">
-              <img class="image" :src="currentTrack.thumbnail" alt="thumb" loading="lazy" />
+              <img
+                class="image"
+                :src="currentTrack.cover"
+                alt="thumb"
+                loading="lazy"
+                @error="setAltImg"
+              />
             </div>
             <div class="info">
-              <div class="title">{{ currentTrack.title }}</div>
-              <div class="artist">{{ currentTrack.singer }}</div>
+              <div class="name">{{ currentTrack.name }}</div>
+              <div class="artist">{{ currentTrack.artist }}</div>
               <div class="progress">
                 <div class="time">
                   <div class="text">{{ $props.currentTimeReadable }}</div>
@@ -103,11 +110,17 @@
               @click="handlePlaySpecifiedTrackEvent(index)"
             >
               <div class="thumb">
-                <img class="image" :src="track.thumbnail" alt="thumb" loading="lazy" />
+                <img
+                  class="image"
+                  :src="track.cover"
+                  alt="thumb"
+                  loading="lazy"
+                  @error="setAltImg"
+                />
               </div>
               <div class="info">
-                <div class="title">{{ track.title }}</div>
-                <div class="artist">{{ track.singer }}</div>
+                <div class="name">{{ track.name }}</div>
+                <div class="artist">{{ track.artist }}</div>
               </div>
             </div>
           </div>
@@ -128,6 +141,7 @@
   import ColorThief from '@moezx/colorthief'
   import chroma from 'chroma-js'
   import utils from '@/utils'
+  import { DEFAULT_COVER } from '@/utils/constants'
   import Lrc from '../Lrc.vue'
   export default {
     name: 'Track',
@@ -144,18 +158,19 @@
       playMode: { type: Number, default: 0 },
       playList: {
         type: Array,
-        default() {
-          return [
-            {
-              audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
-              thumbnail:
-                'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-              title: 'Symphony',
-              singer: 'Clean Bandit ft. Zara Larsson',
-              lrc: [['00:00', 'Not available']],
-            },
-          ]
-        },
+        required: true,
+        // default() {
+        //   return [
+        //     {
+        //       audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
+        //       cover:
+        //         'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
+        //       name: 'Symphony',
+        //       artist: 'Clean Bandit ft. Zara Larsson',
+        //       lrc: [['00:00', 'Not available']],
+        //     },
+        //   ]
+        // },
       },
     },
     data() {
@@ -259,14 +274,13 @@
         if (current) {
           return current
         } else {
-          // TODO: defalut image
+          // defalut image
           return {
-            audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
-            thumbnail:
-              'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-            title: 'Symphony',
-            singer: 'Clean Bandit ft. Zara Larsson',
-            lrc: [['00:00', 'Not available']],
+            cover: DEFAULT_COVER,
+            name: 'Track Loading',
+            artist: '',
+            lrc: [['00:00', 'Loading']],
+            color: '#333333',
           }
         }
       },
@@ -274,13 +288,18 @@
     watch: {
       currentTrack: {
         handler() {
-          this.colorThief()
+          this.colorThief(this.currentTrack.cover, this.currentTrack.color)
         },
         deep: true,
         immediate: true,
       },
     },
     methods: {
+      setAltImg(event) {
+        event.target.src = DEFAULT_COVER
+        this.colorThief(DEFAULT_COVER, null)
+        // event.target.style.background = this.currentTrack.color || '#999999'
+      },
       handleSeekEvent(time) {
         this.$emit('seek', time)
       },
@@ -319,27 +338,36 @@
           button.event()
         }
       },
-      colorThief() {
-        const image = new Image()
-        image.crossOrigin = 'anonymous'
-        image.src = this.currentTrack.thumbnail
-        image.addEventListener('load', async (event) => {
-          const colorThief = new ColorThief()
-          let color
-          try {
-            color = chroma(...(await colorThief.getColor(image))).hex()
-          } catch (e) {
-            color = '#333333'
-          }
-          const contrast = chroma.contrast(chroma(color).hex(), '#ffffff')
-          if (contrast < 4) {
-            color = chroma(color).darken(3).hex()
-          }
-          this.primaryColor = chroma(color).hex()
-          this.secondaryColor = chroma(color).brighten().hex()
-          this.darkColor = chroma(color).darken().hex()
-          this.lightColor = chroma(color).brighten(2.5).hex()
-        })
+      async colorThief(_cover, _color) {
+        const cover = _cover
+        let color
+        if (_color) {
+          color = _color
+        } else {
+          const image = new Image()
+          image.crossOrigin = 'anonymous'
+          image.src = cover
+          await new Promise((resolve) => {
+            image.addEventListener('load', async (event) => {
+              const colorThief = new ColorThief()
+
+              try {
+                color = chroma(...(await colorThief.getColor(image))).hex()
+              } catch (e) {
+                color = '#333333'
+              }
+              const contrast = chroma.contrast(chroma(color).hex(), '#ffffff')
+              if (contrast < 4) {
+                color = chroma(color).darken(3).hex()
+              }
+              resolve()
+            })
+          })
+        }
+        this.primaryColor = chroma(color).hex()
+        this.secondaryColor = chroma(color).brighten().hex()
+        this.darkColor = chroma(color).darken().hex()
+        this.lightColor = chroma(color).brighten(2.5).hex()
       },
     },
     mounted() {
@@ -370,7 +398,7 @@
     > .cover {
       width: 100%;
       height: 100%;
-      .thumbnail {
+      .image {
         width: 100%;
         height: 100%;
       }
@@ -600,7 +628,7 @@
               box-sizing: border-box;
               border-bottom: 2px $shadow-gray solid;
               // padding-bottom: 1px;
-              .title {
+              .name {
                 font-size: 0.8em;
                 font-weight: 500;
                 letter-spacing: 3px;
@@ -631,7 +659,7 @@
                 height: 100%;
                 justify-content: flex-end;
                 border-bottom: none;
-                // .title {
+                // .name {
                 // }
                 .artist {
                   margin-top: 4px;
@@ -716,5 +744,10 @@
         }
       }
     }
+  }
+  .image {
+    position: relative;
+    object-fit: cover;
+    object-position: center center;
   }
 </style>
