@@ -1,6 +1,6 @@
 module.exports = {
   // 行宽 default:80
-  printWidth: 100,
+  printWidth: 233,
   // tab 宽度 default:2
   tabWidth: 2,
   // 使用 tab 键 default:false
