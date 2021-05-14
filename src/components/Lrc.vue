@@ -66,7 +66,9 @@
         }),
         offsetTop: computed(() => {
           let offset
-          if (state.currentIndex >= 0) {
+          if (!state.currentIndex) {
+            offset = 0
+          } else if (state.currentIndex >= 0) {
             if (state.rowRefs[state.currentIndex]) {
               offset = state.rowRefs[state.currentIndex].offsetTop
             } else {
