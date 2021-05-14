@@ -575,10 +575,14 @@
             transform-origin: bottom;
             transition: all 0.5s ease-in-out;
             &.display {
-              left: 0;
+              // left: 0;
+              opacity: 1;
+              pointer-events: auto;
             }
             &.hide {
-              left: -100%;
+              // left: -100%;
+              opacity: 0;
+              pointer-events: none;
             }
           }
           .lrc {
@@ -587,12 +591,16 @@
             width: 100%;
             height: 180px;
             transform-origin: bottom;
-            transition: all 0.5s ease-in-out;
+            transition: all 0.3s ease-in-out;
             &.display {
-              left: 0;
+              // left: 0;
+              opacity: 1;
+              pointer-events: auto;
             }
             &.hide {
-              left: 100%;
+              // left: 100%;
+              opacity: 0;
+              pointer-events: none;
             }
           }
           .track-item {
@@ -746,7 +754,6 @@
     }
   }
   .image {
-    position: relative;
     object-fit: cover;
     object-position: center center;
   }

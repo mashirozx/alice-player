@@ -2,6 +2,8 @@
 
 > A beautiful H5 music player built with Vue3. 🍉
 
+**This project is under heavy development, APIs might be changed in the feature.**
+
 ## Preview
 
 | The cover | The play list | The lyrics |
@@ -36,9 +38,9 @@ yarn add alice-player
 ```js
 var playList = [
   {
-    audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.mp3',
-    cover: 'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-    lrc: 'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.lrc',
+    audio: 'https://s3-hk.2heng.xin/mstdn/static/alice-player/demo/僕らの手には何もないけど.mp3',
+    cover: 'https://s3-hk.2heng.xin/mstdn/static/alice-player/demo/僕らの手には何もないけど.jpg',
+    lrc: 'https://s3-hk.2heng.xin/mstdn/static/alice-player/demo/僕らの手には何もないけど.lrc',
     name: '僕らの手には何もないけど、',
     artist: 'RAM WIRE',
   },
@@ -58,10 +60,19 @@ var ap = new AlicePlayer(playList, options)
 | :-: | :-: | :-: | :-- |
 | container | String | `'#app'` | Where we render the player on HTML |
 | autoplay | Boolean | `false` | Auto play audio |
-| preload | String | 'metadata' | [HTMLMediaElement.preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#attr-preload) |
+| preload | String | `'metadata'` | [HTMLMediaElement.preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#attr-preload) |
 | color | String | `null` | The default theme color, can also be set in track info object in `playList`, which will overwrite the global color setting |
 | playMode | String | `'order'` | Value can be one of `order`, `random`, and `single` |
-| volume | Number | 0.7 | The default volume, range from 0 to 1 |
-| storageName | String | 'alice-player-setting' | The key prefix where we save values in cookie |
+| volume | Number | `0.7` | The default volume, range from 0 to 1 |
+| storageName | String | `'alice-player-setting'` | The key prefix where we save values in cookie |
 
-_Note: This plugin is still under heavily development, some options doesn't really work now._
+_Note: This plugin is still under heavy development, some options doesn't really work now._
+
+## TODO
+
+- [ ] Audio buffer progress
+- [ ] Media error handling
+- [ ] HLS stream support
+- [ ] Vue component encapsulation
+- [ ] Split vender script file
+- [ ] Github Pages build workflow
