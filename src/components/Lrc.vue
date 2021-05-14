@@ -131,6 +131,7 @@
       padding: 5px 10px;
       text-align: center;
       white-space: pre-line;
+      cursor: pointer;
       .content {
         display: block;
       }

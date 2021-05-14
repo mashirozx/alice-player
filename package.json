@@ -1,6 +1,6 @@
 {
   "name": "alice-player",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,8 @@
     "format:lint": "eslint \"src/**/*.{ts,js,json,vue}\" --fix",
     "format:prettier": "prettier \"src/**/*.{ts,js,json,vue}\" --write",
     "git:commit": "git add . && git commit",
-    "gen:icon": "node scripts/import-svg-icons.js && eslint \"src/components/Icon.vue\" --fix && prettier \"src/components/Icon.vue\" --write"
+    "gen:icon": "node scripts/import-svg-icons.js && eslint \"src/components/Icon.vue\" --fix && prettier \"src/components/Icon.vue\" --write",
+    "release": "vite build && npm publish --registry http://registry.npmjs.org --access public"
   },
   "dependencies": {
     "@yzfe/svgicon": "^1.0.1",

@@ -159,18 +159,6 @@
       playList: {
         type: Array,
         required: true,
-        // default() {
-        //   return [
-        //     {
-        //       audio: 'https://ngx.moezx.cc/share/SamoyedPlayer/yourname.mp3',
-        //       cover:
-        //         'https://ngx.moezx.cc/share/SamoyedPlayer/僕らの手には何もないけど、 - RAM WIRE.jpg',
-        //       name: 'Symphony',
-        //       artist: 'Clean Bandit ft. Zara Larsson',
-        //       lrc: [['00:00', 'Not available']],
-        //     },
-        //   ]
-        // },
       },
     },
     data() {
@@ -220,10 +208,9 @@
             },
           },
           {
-            volume: true,
-            classes: ['volume'],
-            icon: volumeIcon(),
-            event: () => this.$emit('toggleMute'),
+            classes: ['shuffle'],
+            icon: modeIcon(),
+            event: () => this.$emit('changePlayMode'),
           },
           {
             classes: ['previous'],
@@ -241,9 +228,10 @@
             event: () => this.$emit('next'),
           },
           {
-            classes: ['shuffle'],
-            icon: modeIcon(),
-            event: () => this.$emit('changePlayMode'),
+            volume: true,
+            classes: ['volume'],
+            icon: volumeIcon(),
+            event: () => this.$emit('toggleMute'),
           },
           {
             classes: ['lrc'],
@@ -265,7 +253,10 @@
           '--light': this.lightColor,
           '--dark': this.darkColor,
           '--dark-lighten-15': chroma(this.darkColor).brighten(1.5),
-          '--box-shadow': chroma(this.lightColor).alpha(0.4),
+          '--light-alpha-1': chroma(this.lightColor).alpha(0.1),
+          '--light-alpha-4': chroma(this.lightColor).alpha(0.4),
+          '--primary-lighten-20': chroma(this.secondaryColor).brighten(2),
+          '--secondary-lighten-20': chroma(this.secondaryColor).brighten(2),
           '--secondary-darken-10': chroma(this.secondaryColor).darken(1),
         }
       },
@@ -394,7 +385,7 @@
     height: 300px;
     overflow: hidden;
     border-radius: 5px;
-    box-shadow: 5px 5px 15px var(--box-shadow);
+    box-shadow: 5px 5px 15px var(--light-alpha-4);
     > .cover {
       width: 100%;
       height: 100%;
@@ -440,6 +431,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
             .bar {
               height: 6px;
               width: 100%;
@@ -484,6 +476,7 @@
         justify-content: center;
         .button {
           transition: all 0.5s ease;
+          cursor: pointer;
           &:hover {
             color: var(--dark-lighten-15);
           }
@@ -503,11 +496,11 @@
             font-size: 0.8em;
           }
           &.shuffle {
-            margin-left: 30px;
+            margin-right: 30px;
             font-size: 0.8em;
           }
           &.volume {
-            margin-right: 30px;
+            margin-left: 30px;
             font-size: 0.8em;
             $bar-height: 36px;
             .volume-control {
@@ -611,6 +604,7 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.5s ease-in-out;
+            cursor: pointer;
             .thumb {
               flex: 0 0 auto;
               width: 60px;
@@ -655,6 +649,7 @@
               box-sizing: border-box;
               border-top: 2px $shadow-gray solid;
               border-bottom: 3px $shadow-gray solid;
+              cursor: auto;
               .thumb {
                 width: 75px;
                 height: 75px;
@@ -698,6 +693,7 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
+                    cursor: pointer;
                     .bar {
                       height: 6px;
                       width: 100%;
@@ -756,5 +752,42 @@
   .image {
     object-fit: cover;
     object-position: center center;
+  }
+
+  $ui-base-color: var(--primary-lighten-20);
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border: 0px none var(--primary);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: var(--secondary);
+  }
+
+  ::-webkit-scrollbar-track {
+    border: 0px none var(--primary-lighten-20);
+    border-radius: 0;
+    background: var(--light-alpha-1);
+  }
+
+  ::-webkit-scrollbar-track:hover {
+    background: $ui-base-color;
+  }
+
+  ::-webkit-scrollbar-track:active {
+    background: $ui-base-color;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
 </style>
