@@ -431,9 +431,9 @@ chalk@^4.0.0:
     fsevents "~2.3.1"
 
 chroma-js@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.nlark.com/chroma-js/download/chroma-js-2.1.1.tgz#413c8fbcc4c0988dc7c77bb59c4de36573b8fe97"
-  integrity sha1-QTyPvMTAmI3Hx3u1nE3jZXO4/pc=
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-2.1.2.tgz#1075cb9ae25bcb2017c109394168b5cf3aa500ec"
+  integrity sha512-ri/ouYDWuxfus3UcaMxC1Tfp3IE9K5iQzxc2hSxbBRVNQFut1UuGAsZmiAf2mOUubzGJwgMSv9lHg+XqLaz1QQ==
   dependencies:
     cross-env "^6.0.3"
 
