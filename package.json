@@ -19,7 +19,7 @@
     "@yzfe/vue3-svgicon": "^1.0.1",
     "chroma-js": "^2.1.1",
     "@moezx/colorthief": "^2.3.2-1",
-    "js-cookie": "^2.2.1",
+    "js-cookie": "^3.0.0",
     "object-hash": "^2.1.1",
     "vue": "^3.0.5"
   },
