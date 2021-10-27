@@ -2096,9 +2096,9 @@ vite-plugin-svgicon@^1.0.0-alpha.0:
     minimatch "^3.0.4"
 
 vite@^2.2.4:
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.6.5.tgz#c4d25972e2f7371e682da86828722ddf5126f3d1"
-  integrity sha512-vavXMChDUb4Oh4YunrK9BrH5Ox74cu0eOp0VuyI/iqFz1FqbWD72So2c9I87lLL2n0+6tFPV5ijow60KrtxuZg==
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.6.12.tgz#17d819ca6766f59a7609a50ab8a2d2cdc05f1523"
+  integrity sha512-0K7HUgAFiWOCWMkshjunCieTgawoSfmtExTwNoaVc5uTUb3ZEWb3DUP9Ze1l5dZZBxmNrbo5GrmJp2UJA3g+jA==
   dependencies:
     esbuild "^0.13.2"
     postcss "^8.3.8"
