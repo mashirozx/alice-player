@@ -20,7 +20,7 @@
     "chroma-js": "^2.1.1",
     "@moezx/colorthief": "^2.3.2-1",
     "js-cookie": "^3.0.0",
-    "object-hash": "^2.1.1",
+    "object-hash": "^3.0.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
