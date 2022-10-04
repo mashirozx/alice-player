@@ -31,7 +31,7 @@
     "camelcase": "^6.2.0",
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^7.9.0",
+    "eslint-plugin-vue": "^9.6.0",
     "prettier": "^2.3.0",
     "sass": "^1.32.12",
     "sass-loader": "^12.0.0",
